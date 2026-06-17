@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espot Bikes - Rutas y Alquiler en los Pirineos</title>
+    <!-- Fonts: Outfit for Headings, Plus Jakarta Sans for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,700;1,800&family=Kanit:ital,wght@0,800;1,800&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet.js for Real Topographic Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-brand-container" style="align-items: center; display: flex; gap: 0.5rem;">
+                <a href="#inicio" class="logo" id="logo-btn" style="text-decoration: none; display: flex; align-items: center;">
+                    <img src="logo_oficial.png" alt="Espot Bikes Logo" style="height: 85px; width: auto; object-fit: contain; border-radius: 4px;" />
+                </a>
+                <a href="https://www.hostalpalmira.com/" target="_blank" class="hp-badge hp-badge-lg" title="Visitar Hostal Casa Palmira">HP</a>
+            </div>
+            <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="#inicio" class="nav-link active" data-view="inicio"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                    <li><a href="#bicis" class="nav-link" data-view="bicis"><i class="fa-solid fa-bicycle"></i> Nuestras Bicis</a></li>
+                    <li><a href="#rutas" class="nav-link" data-view="rutas"><i class="fa-solid fa-map-location-dot"></i> Rutas</a></li>
+                    <li><a href="#contacto" class="nav-link" data-view="contacto"><i class="fa-solid fa-circle-info"></i> Información</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="app">
+        <!-- Las vistas de la Single Page Application se inyectarán aquí dinámicamente -->
+        <div class="loader-container">
+            <div class="loader"></div>
+            <p>Cargando Espot Bikes...</p>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="header-brand-container" style="margin-bottom: 1.25rem; align-items: center; display: flex; gap: 0.5rem;">
+                    <a href="#inicio" class="logo" id="logo-btn-footer" style="text-decoration: none; display: flex; align-items: center;">
+                        <img src="logo_oficial.png" alt="Espot Bikes Logo" style="height: 105px; width: auto; object-fit: contain; border-radius: 4px;" />
+                    </a>
+                    <a href="https://www.hostalpalmira.com/" target="_blank" class="hp-badge" title="Visitar Hostal Casa Palmira">HP</a>
+                </div>
+                <p class="brand-desc">Tu plan de montaña sobre dos ruedas en Espot y los Valls d'Àneu. Ofrecido en colaboración directa con <strong>Hostal Casa Palmira</strong>.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.hostalpalmira.com" aria-label="Web"><i class="fa-solid fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Enlaces de Interés</h4>
+                <ul>
+                    <li><a href="#inicio" data-view="inicio">Inicio</a></li>
+                    <li><a href="#bicis" data-view="bicis">Nuestras Bicis</a></li>
+                    <li><a href="#rutas" data-view="rutas">Rutas de BTT</a></li>
+                    <li><a href="#contacto" data-view="contacto">Información y Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contacto</h4>
+                <p><i class="fa-solid fa-hotel"></i> Hostal Casa Palmira, 25597 Espot, Lleida</p>
+                <p><i class="fa-solid fa-phone"></i> +34 665 07 32 77 (Reservas)</p>
+                <p><i class="fa-solid fa-globe"></i> <a href="https://www.hostalpalmira.com" target="_blank" style="color: var(--primary);">www.hostalpalmira.com</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Espot Bikes / Hostal Casa Palmira. Todos los derechos reservados. Desarrollado con pasión alpina.</p>
+        </div>
+    </footer>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/34665073277?text=Hola,%20quiero%20reservar%20una%20bicicleta" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
