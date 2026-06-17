@@ -305,6 +305,22 @@ section {
     color: #ffffff; /* Texto blanco para el encabezado oscuro */
 }
 
+.header-logo-img {
+    height: 85px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    transition: var(--transition-normal);
+}
+
+.footer-logo-img {
+    height: 105px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    transition: var(--transition-normal);
+}
+
 .logo-icon {
     font-size: 1.8rem;
     color: var(--primary);
@@ -1873,6 +1889,29 @@ section {
 }
 
 @media (max-width: 768px) {
+    #app {
+        margin-top: 67px; /* Matches mobile header height (55px logo + padding) */
+        min-height: calc(100vh - 67px - 300px);
+    }
+
+    .hero-banner-wrapper {
+        margin-top: -67px;
+    }
+
+    .header-logo-img {
+        height: 55px; /* Shorter logo on mobile */
+    }
+
+    .footer-logo-img {
+        height: 75px; /* Shorter logo on mobile */
+    }
+
+    .header-brand-container .hp-badge-lg {
+        width: 36px;
+        height: 36px;
+        font-size: 1.05rem;
+    }
+
     section {
         padding: 4rem 1rem;
     }
@@ -1918,7 +1957,7 @@ section {
         top: 100%;
         left: 0;
         width: 100%;
-        background: var(--bg-surface-solid);
+        background: rgba(15, 23, 42, 0.98); /* Match dark header */
         border-bottom: var(--glass-border);
         max-height: 0;
         overflow: hidden;
@@ -1937,6 +1976,12 @@ section {
     
     .nav-link {
         padding: 0.8rem 1.5rem;
+        color: rgba(255, 255, 255, 0.75); /* Readable text on dark dropdown */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Separators between links */
+    }
+    
+    .nav-link:last-child {
+        border-bottom: none;
     }
     
     .nav-link::after {
@@ -2487,9 +2532,10 @@ section {
    ------------------------------------------------------------- */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.5rem; /* Amplia separación */
+    max-width: 960px; /* Evita que crezcan al limitar el ancho total */
+    margin: 2.5rem auto 0 auto; /* Centra la rejilla en la pantalla */
 }
 
 .gallery-item {
@@ -2503,15 +2549,27 @@ section {
     background-color: #f1f5f9;
 }
 
-.gallery-item--large {
-    grid-column: span 2;
-    aspect-ratio: 16/9;
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+        max-width: 860px;
+    }
 }
 
-@media (max-width: 992px) {
-    .gallery-item--large {
-        grid-column: span 1;
-        aspect-ratio: 4/3;
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 580px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 280px;
     }
 }
 

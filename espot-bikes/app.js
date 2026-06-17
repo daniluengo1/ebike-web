@@ -3,6 +3,7 @@
 import { renderHero } from './components/hero.js';
 import { renderBikes } from './components/bikes.js';
 import { renderRoutes } from './components/routes.js';
+import { renderTienda } from './components/tienda.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const appContainer = document.getElementById('app');
@@ -52,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '#inicio': () => renderHero(appContainer),
         '#bicis': () => renderBikes(appContainer),
         '#rutas': () => renderRoutes(appContainer),
+        '#tienda': () => renderTienda(appContainer),
         '#contacto': () => renderContact(appContainer)
     };
 
